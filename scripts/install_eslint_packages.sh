@@ -1,11 +1,12 @@
 #!/bin/sh
 
-yarn add -D eslint-plugin-regexp \
-  eslint-plugin-optimize-regex \
-  eslint-plugin-lodash \
+yarn add -D \
+  @typescript-eslint/eslint-plugin \
+  @typescript-eslint/parser \
   eslint-config-airbnb-base \
   eslint-config-google \
   eslint-config-prettier \
+  eslint-import-resolver-typescript \
   eslint-plugin-eslint-comments \
   eslint-plugin-import \
   eslint-plugin-jsonc \
@@ -14,16 +15,16 @@ yarn add -D eslint-plugin-regexp \
   eslint-plugin-no-secrets \
   eslint-plugin-no-unsanitized \
   eslint-plugin-nuxt \
+  eslint-plugin-optimize-regex \
   eslint-plugin-promise \
   eslint-plugin-react \
+  eslint-plugin-regexp \
   eslint-plugin-security \
   eslint-plugin-sonarjs \
   eslint-plugin-unicorn \
   eslint-plugin-vue \
-  eslint-plugin-xss \
-  @typescript-eslint/eslint-plugin \
-  @typescript-eslint/parser
-  # @nuxtjs/eslint-config-typescript \
-  # @nuxtjs/eslint-module
+  eslint-plugin-xss
 
-# @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint typescript
+
+# @nuxtjs/eslint-config-typescript \
+# @nuxtjs/eslint-module \
