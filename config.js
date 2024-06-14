@@ -177,5 +177,7 @@ module.exports = {
       },
     ],
     "vue/singleline-html-element-content-newline": "off",
+    // Prettier confilict in multiline v-if.
+    "vue/html-indent": "off",
   },
 }
