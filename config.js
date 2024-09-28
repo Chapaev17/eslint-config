@@ -93,6 +93,15 @@ module.exports = {
         },
       },
     ],
+    // Disable function for use step-down structure.
+    "no-use-before-define": [
+      "error",
+      {
+        functions: false,
+        classes: true,
+        variables: true,
+      },
+    ],
 
     // # Off.
     // Use v-html.
