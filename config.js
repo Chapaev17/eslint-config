@@ -31,7 +31,7 @@ module.exports = {
     "prettier", // Prettier
 
     /** Security */
-    "plugin:no-unsanitized/DOM",
+    "plugin:no-unsanitized/recommended-legacy",
     // "plugin:security/recommended",
     "plugin:jsonc/base",
 
