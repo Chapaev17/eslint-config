@@ -102,6 +102,7 @@ module.exports = {
         variables: true,
       },
     ],
+    "import/no-duplicates": "warn",
 
     // # Off.
     // Use v-html.
@@ -133,6 +134,8 @@ module.exports = {
     // Conflict with typescript and maybe slow.
     "unicorn/prefer-json-parse-buffer": "off",
     "unicorn/no-useless-undefined": "off",
+    // In typescript need use import/no-duplicates.
+    "no-duplicate-imports": "off",
 
     // # Change level.
     "unicorn/consistent-function-scoping": "warn",
