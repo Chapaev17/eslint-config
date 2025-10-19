@@ -44,10 +44,11 @@ This document contains all configurations from the old ESLint config file and se
 
 ### Plugins
 
-- [ ] `"no-secrets"` (Security)
-- [ ] `"xss"` (Security)
+- [x] `"no-secrets"` (Security)
+- [ ] `"xss"` (Security) - Not compatible with ESLint 9
 - [ ] `"react"`
 - [x] `"@typescript-eslint"`
+- [x] `"unicorn"`
 
 ### Ignore Patterns
 
@@ -67,26 +68,26 @@ This document contains all configurations from the old ESLint config file and se
 
 #### Standard ESLint
 
-- [ ] `"linebreak-style": ["error", "unix"]`
-- [ ] `"comma-dangle": ["warn", "always-multiline"]`
-- [ ] `"eol-last": "warn"`
-- [ ] `"quotes": ["error", "double", { "avoidEscape": true }]`
-- [ ] `"no-duplicate-imports": "error"`
-- [ ] `"no-console": ["warn", { "allow": ["debug", "error", "warn"] }]`
-- [ ] `"camelcase": "warn"`
+- [x] `"linebreak-style": ["error", "unix"]`
+- [x] `"comma-dangle": ["warn", "always-multiline"]`
+- [x] `"eol-last": "warn"`
+- [x] `"quotes": ["error", "double", { "avoidEscape": true }]`
+- [x] `"no-duplicate-imports": "error"`
+- [x] `"no-console": ["warn", { "allow": ["debug", "error", "warn"] }]`
+- [x] `"camelcase": "warn"`
 - [ ] `"no-use-before-define": ["error", { "functions": false, "classes": true, "variables": true }]`
 - [ ] `"import/no-duplicates": "warn"`
 
 #### Security Rules
 
-- [ ] `"no-secrets/no-secrets": "error"`
-- [ ] `"xss/no-mixed-html": "error"`
-- [ ] `"xss/no-location-href-assign": "error"`
+- [x] `"no-secrets/no-secrets": "error"`
+- [ ] `"xss/no-mixed-html": "error"` - Not compatible with ESLint 9
+- [ ] `"xss/no-location-href-assign": "error"` - Not compatible with ESLint 9
 
 #### Unicorn Rules
 
-- [ ] `"unicorn/filename-case": ["error", { "cases": { "kebabCase": true, "camelCase": true, "snakeCase": true, "pascalCase": true } }]`
-- [ ] `"unicorn/consistent-function-scoping": "warn"`
+- [x] `"unicorn/filename-case": ["error", { "cases": { "kebabCase": true, "camelCase": true, "snakeCase": true, "pascalCase": true } }]`
+- [x] `"unicorn/consistent-function-scoping": "warn"`
 
 #### React Rules
 
@@ -104,11 +105,11 @@ This document contains all configurations from the old ESLint config file and se
 
 ### Disabled Rules
 
-- [ ] `"vue/no-v-html": "off"`
+- [x] `"vue/no-v-html": "off"`
 - [ ] `"lodash/prefer-lodash-method": "off"`
 - [ ] `"require-jsdoc": "off"`
 - [ ] `"valid-jsdoc": "off"`
-- [ ] `"unicorn/prefer-dom-node-text-content": "off"`
+- [x] `"unicorn/prefer-dom-node-text-content": "off"`
 - [ ] `"security/detect-object-injection": "off"`
 - [ ] `"no-shadow": "off"`
 - [ ] `"import/extensions": "off"`
@@ -117,10 +118,10 @@ This document contains all configurations from the old ESLint config file and se
 - [ ] `"no-restricted-syntax": "off"`
 - [ ] `"import/prefer-default-export": "off"`
 - [ ] `"no-undef": "off"`
-- [ ] `"unicorn/prefer-json-parse-buffer": "off"`
-- [ ] `"unicorn/no-useless-undefined": "off"`
+- [x] `"unicorn/prefer-json-parse-buffer": "off"`
+- [x] `"unicorn/no-useless-undefined": "off"`
 - [ ] `"no-duplicate-imports": "off"`
-- [ ] `"max-len": "off"`
+- [x] `"max-len": "off"`
 - [ ] `"vue/max-len": "off"`
 - [ ] `"vue/require-default-prop": "off"`
 - [ ] `"vue/singleline-html-element-content-newline": "off"`
