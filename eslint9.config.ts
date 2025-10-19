@@ -1,26 +1,34 @@
-import { FlatCompat } from "@eslint/eslintrc"
-
 import { defineConfig } from "eslint/config"
 import vueParcser from "vue-eslint-parser"
-import typescriptEslintParser from "@typescript-eslint/parser"
-
-import js from "@eslint/js"
-import tsEslint from "typescript-eslint"
-import regexpPlugin from "eslint-plugin-regexp"
-import pluginVue from "eslint-plugin-vue"
 import globals from "globals"
 
+import jsEslint from "@eslint/js"
+import tsEslint from "typescript-eslint"
+
+import pluginVue from "eslint-plugin-vue"
+import pluginUnicorn from "eslint-plugin-unicorn"
+import pluginNoSecrets from "eslint-plugin-no-secrets"
+import regexpPlugin from "eslint-plugin-regexp"
+
+// Not compatible with ESLint 9
+// import pluginXss from "eslint-plugin-xss"
+
+// import pluginTypescriptEslint, {
+//   configs,
+// } from "@typescript-eslint/eslint-plugin"
+// import pluginReact from "eslint-plugin-react"
+
 // const optimizeRegexAllPlugin = require("eslint-plugin-optimize-regex")
-import nounsanitized from "eslint-plugin-no-unsanitized"
-import importPlugin from "eslint-plugin-import"
-import pluginSecurity from "eslint-plugin-security"
+// import nounsanitized from "eslint-plugin-no-unsanitized"
+// import importPlugin from "eslint-plugin-import"
+// import pluginSecurity from "eslint-plugin-security"
 // const airbnbBasePlugin = require("eslint-config-airbnb-base")
 
 import myCustomRules from "./baseConfig9.ts"
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-})
+// const compat = new FlatCompat({
+//   baseDirectory: __dirname,
+// })
 
 const ignores = [
   "node_modules/**/*",
@@ -45,16 +53,33 @@ export default defineConfig([
       parser: vueParcser,
       ecmaVersion: 2024,
       parserOptions: {
-        parser: typescriptEslintParser,
+        parser: tsEslint.parser,
         ecmaFeatures: {
           jsx: true,
         },
       },
     },
+    plugins: {
+      "no-secrets": pluginNoSecrets,
+      unicorn: pluginUnicorn,
+    },
   },
-  js.configs.recommended,
-  ...tsEslint.configs.recommended,
+  jsEslint.configs.recommended,
+  ...tsEslint.configs.strict,
+  ...tsEslint.configs.stylistic,
   ...pluginVue.configs["flat/essential"],
+  // if use type checking in eslint
+  // ...tsEslint.configs.strictTypeChecked,
+  // ...tsEslint.configs.stylisticTypeChecked,
+  // {
+  //   languageOptions: {
+  //     parserOptions: {
+  //       projectService: true,
+  //       extraFileExtensions: [".vue"],
+  //     },
+  //   },
+  // },
+
   // /** More */
   // regexpPlugin.configs["flat/recommended"], // Regulars
   // ...compat.extends("plugin:optimize-regex/all"), // Regulars

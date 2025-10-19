@@ -1,11 +1,3 @@
-import pluginNoSecrets from "eslint-plugin-no-secrets"
-import pluginXss from "eslint-plugin-xss"
-import pluginTypescriptEslint, {
-  configs,
-} from "@typescript-eslint/eslint-plugin"
-import pluginUnicorn from "eslint-plugin-unicorn"
-import pluginReact from "eslint-plugin-react"
-import vuePlugin from "eslint-plugin-vue"
 import { defineConfig } from "eslint/config"
 
 export default defineConfig([
@@ -24,34 +16,34 @@ export default defineConfig([
       "no-console": ["warn", { allow: ["debug", "error", "warn"] }],
       camelcase: "warn",
       // ## Security.
-      // "no-secrets/no-secrets": "error",
+      "no-secrets/no-secrets": "error",
+      // Not compatible with ESLint 9
       // "xss/no-mixed-html": "error",
       // "xss/no-location-href-assign": "error",
       // ## Other
       // All old files wrote wrong.
-      // "unicorn/filename-case": [
-      //   "error",
-      //   {
-      //     cases: {
-      //       kebabCase: true,
-      //       camelCase: true,
-      //       snakeCase: true,
-      //       pascalCase: true,
-      //     },
-      //   },
-      // ],
-      // "sort-keys": "warn",
+      "unicorn/filename-case": [
+        "error",
+        {
+          cases: {
+            kebabCase: true,
+            camelCase: true,
+            snakeCase: true,
+            pascalCase: true,
+          },
+        },
+      ],
 
       // # Off.
       // Use v-html.
-      // "vue/no-v-html": "off",
-      // // Dont use lodash instead of default js function.
+      "vue/no-v-html": "off",
+      // Dont use lodash instead of default js function.
       // "lodash/prefer-lodash-method": "off",
       // // Not write jsdoc comments.
       // // "require-jsdoc": "off",
       // // "valid-jsdoc": "off",
       // // He get clear text without space and enlines.
-      // "unicorn/prefer-dom-node-text-content": "off",
+      "unicorn/prefer-dom-node-text-content": "off",
       // /** Acces get value by dinamic key. Need control, what
       // key was't got from user input.
       // */
@@ -69,12 +61,12 @@ export default defineConfig([
       // "no-restricted-syntax": "off",
       // "import/prefer-default-export": "off",
       // "no-undef": "off",
-      // // Conflict with typescript and maybe slow.
-      // "unicorn/prefer-json-parse-buffer": "off",
-      // "unicorn/no-useless-undefined": "off",
+      // Conflict with typescript and maybe slow.
+      "unicorn/prefer-json-parse-buffer": "off",
+      "unicorn/no-useless-undefined": "off",
       //
-      // // # Change level.
-      // // "unicorn/consistent-function-scoping": "warn",
+      // # Change level.
+      "unicorn/consistent-function-scoping": "warn",
       // // Order
       // "react/jsx-sort-props": "warn",
       // // Change error to wart. This most build in dev with this.
@@ -127,6 +119,7 @@ export default defineConfig([
       // "vue/singleline-html-element-content-newline": "off",
       // // Prettier confilict in multiline v-if.
       // "vue/html-indent": "off",
+      "sort-keys": "off",
     },
   },
 ])
