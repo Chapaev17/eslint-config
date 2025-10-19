@@ -1,9 +1,7 @@
 import { defineConfig } from "eslint/config"
+import tsEslint from "typescript-eslint"
 import vueParcser from "vue-eslint-parser"
 import globals from "globals"
-
-import jsEslint from "@eslint/js"
-import tsEslint from "typescript-eslint"
 
 import pluginVue from "eslint-plugin-vue"
 import pluginUnicorn from "eslint-plugin-unicorn"
@@ -11,20 +9,31 @@ import pluginNoSecrets from "eslint-plugin-no-secrets"
 import pluginReact from "eslint-plugin-react"
 import * as pluginRegexp from "eslint-plugin-regexp"
 import pluginSecurity from "eslint-plugin-security"
+import pluginJsxA11y from "eslint-plugin-jsx-a11y"
+import pluginPromise from "eslint-plugin-promise"
+
+import nounsanitized from "eslint-plugin-no-unsanitized"
+import jsEslint from "@eslint/js"
+import sonarjs from "eslint-plugin-sonarjs"
+import eslintConfigPrettier from "eslint-config-prettier/flat"
+import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended"
+import eslintPluginJsonc from "eslint-plugin-jsonc"
+import pluginImport from "eslint-plugin-import"
 
 // Not compatible with ESLint 9
-// import pluginXss from "eslint-plugin-xss"
+// Import airbnbBasePlugin from "eslint-config-airbnb-base"
+// Import eslintConfigGoogle from "eslint-config-google"
+// Import pluginXss from "eslint-plugin-xss"
+// Import optimizeRegexAllPlugin from "eslint-plugin-optimize-regex"
+
+// import eslintPluginEslintComments from "eslint-plugin-eslint-comments"
 // Lodash
+// Import nuxtEslint from "@nuxtjs/eslint-config"
 
-// const optimizeRegexAllPlugin = require("eslint-plugin-optimize-regex")
-// import nounsanitized from "eslint-plugin-no-unsanitized"
-// import importPlugin from "eslint-plugin-import"
-// const airbnbBasePlugin = require("eslint-config-airbnb-base")
+// Import importPlugin from "eslint-plugin-import"
 
-import myCustomRules from "./baseConfig9.ts"
-
-// const compat = new FlatCompat({
-//   baseDirectory: __dirname,
+// Const compat = new FlatCompat({
+//   BaseDirectory: __dirname,
 // })
 
 const ignores = [
@@ -43,13 +52,20 @@ const ignores = [
 // "lodash/prefer-lodash-method": "off",
 
 export default defineConfig([
-  jsEslint.configs.recommended,
+  jsEslint.configs.all,
   ...tsEslint.configs.strict,
   ...tsEslint.configs.stylistic,
   ...pluginVue.configs["flat/essential"],
+  nounsanitized.configs.recommended,
   pluginSecurity.configs.recommended,
+  pluginPromise.configs["flat/recommended"],
+  sonarjs.configs.recommended,
+  pluginUnicorn.configs.all,
+  // Enable in commit linter
+  eslintConfigPrettier,
+  eslintPluginPrettierRecommended,
+  ...eslintPluginJsonc.configs["flat/recommended-with-jsonc"],
   {
-    extends: myCustomRules,
     files: ["*.vue", "**/*.vue", "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
     ignores,
     languageOptions: {
@@ -67,12 +83,26 @@ export default defineConfig([
         },
       },
     },
+    settings: {
+      "import/resolver": {
+        typescript: true,
+        node: {
+          extensions: [".js", ".jsx", ".ts", ".tsx", "vue"],
+        },
+      },
+    },
     plugins: {
       "no-secrets": pluginNoSecrets,
-      unicorn: pluginUnicorn,
+      // Unicorn: pluginUnicorn,
       react: pluginReact,
       regexp: pluginRegexp,
+      nounsanitized,
+      "jsx-a11y": pluginJsxA11y,
     },
+    extends: [
+      pluginImport.flatConfigs.recommended,
+      pluginImport.flatConfigs.typescript,
+    ],
     rules: {
       // # On.
       // ## Standart eslint.
@@ -136,7 +166,7 @@ export default defineConfig([
       // # Change level.
       "unicorn/consistent-function-scoping": "warn",
       // Order
-      // "react/jsx-sort-props": "warn",
+      "react/jsx-sort-props": "warn",
       // Change error to wart. This most build in dev with this.
       "@typescript-eslint/no-unused-vars": "warn",
 
@@ -144,9 +174,9 @@ export default defineConfig([
       // "max-len": [
       //   "warn",
       //   {
-      //     code: 79,
-      //     ignoreUrls: true,
-      //     ignoreStrings: true,
+      //     Code: 79,
+      //     IgnoreUrls: true,
+      //     IgnoreStrings: true,
       //   },
       // ],
       "max-len": "off",
@@ -161,15 +191,15 @@ export default defineConfig([
         },
       ],
       // Prettier confilict with this rule in self closed
-      // tags.
+      // Tags.
       // "vue/html-closing-bracket-newline": [
       //   "error",
       //   {
-      //     singleline: "never",
-      //     multiline: "always",
-      //     selfClosingTag: {
-      //       singleline: "never",
-      //       multiline: "never",
+      //     Singleline: "never",
+      //     Multiline: "always",
+      //     SelfClosingTag: {
+      //       Singleline: "never",
+      //       Multiline: "never",
       //     },
       //   },
       // ],
@@ -191,40 +221,15 @@ export default defineConfig([
     },
   },
 
-  // if use type checking in eslint
+  // If use type checking in eslint
   // ...tsEslint.configs.strictTypeChecked,
   // ...tsEslint.configs.stylisticTypeChecked,
   // {
-  //   languageOptions: {
-  //     parserOptions: {
-  //       projectService: true,
-  //       extraFileExtensions: [".vue"],
+  //   LanguageOptions: {
+  //     ParserOptions: {
+  //       ProjectService: true,
+  //       ExtraFileExtensions: [".vue"],
   //     },
   //   },
   // },
-
-  // /** More */
-  // regexpPlugin.configs["flat/recommended"], // Regulars
-  // ...compat.extends("plugin:optimize-regex/all"), // Regulars
-  // ...compat.extends("plugin:promise/recommended"), // Promises
-  // // importPlugin.flatConfigs.recommended, // Import
-  // ...compat.extends(importPlugin.flatConfigs.typescript), // Typescript import
-  // ...compat.extends("plugin:eslint-comments/recommended"), // Eslint comments
-  //
-  // /** Packs */
-  // // ...compat.extends("airbnb-base"),
-  // // airbnbBasePlugin,
-  // // ...compat.extends("plugin:sonarjs/recommended"),
-  // // ...compat.extends("google"),
-  // ...compat.extends("prettier"), // Prettier
-  // //
-  // nounsanitized.configs.recommended,
-  // ...compat.extends("plugin:jsonc/base"),
-  //
-  // // /** Core nuxt */
-  // ...compat.extends("plugin:jsx-a11y/strict"), // Jsx
-  // ...compat.extends("plugin:@typescript-eslint/recommended"),
-  // ...compat.extends("plugin:nuxt/recommended"),
-  // ...compat.extends("plugin:vue/vue3-recommended"),
-  // ...pluginVue.configs["flat/recommended"],
 ])
