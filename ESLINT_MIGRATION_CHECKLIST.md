@@ -26,7 +26,7 @@ This document contains all configurations from the old ESLint config file and se
 
 #### Plugin Configurations
 
-- [ ] `"plugin:regexp/all"` (Regular expressions)
+- [x] `"plugin:regexp/all"` (Regular expressions) - Added via plugin
 - [ ] `"plugin:optimize-regex/all"` (Regular expressions)
 - [ ] `"plugin:lodash/recommended"` (Lodash usage)
 - [ ] `"plugin:promise/recommended"` (Promises)
@@ -34,7 +34,7 @@ This document contains all configurations from the old ESLint config file and se
 - [ ] `"plugin:import/typescript"` (TypeScript imports)
 - [ ] `"plugin:eslint-comments/recommended"` (ESLint comments)
 - [ ] `"plugin:sonarjs/recommended"`
-- [ ] `"plugin:unicorn/all"`
+- [x] `"plugin:unicorn/all"` - Added via plugin
 - [ ] `"plugin:no-unsanitized/recommended-legacy"` (Security)
 - [ ] `"plugin:jsonc/base"` (JSON)
 - [ ] `"plugin:jsx-a11y/strict"` (JSX accessibility)
@@ -96,8 +96,8 @@ This document contains all configurations from the old ESLint config file and se
 
 #### TypeScript Rules
 
-- [ ] `"@typescript-eslint/no-shadow": "error"`
-- [ ] `"@typescript-eslint/no-unused-vars": "warn"`
+- [x] `"@typescript-eslint/no-shadow": "error"`
+- [x] `"@typescript-eslint/no-unused-vars": "warn"`
 
 #### Additional TypeScript ESLint Configurations
 
@@ -113,25 +113,25 @@ This document contains all configurations from the old ESLint config file and se
 
 - [x] `"vue/no-v-html": "off"`
 - [ ] `"lodash/prefer-lodash-method": "off"`
-- [ ] `"require-jsdoc": "off"`
-- [ ] `"valid-jsdoc": "off"`
+- [x] `"require-jsdoc": "off"`
+- [x] `"valid-jsdoc": "off"`
 - [x] `"unicorn/prefer-dom-node-text-content": "off"`
-- [ ] `"security/detect-object-injection": "off"`
-- [ ] `"no-shadow": "off"`
+- [x] `"security/detect-object-injection": "off"`
+- [x] `"no-shadow": "off"`
 - [ ] `"import/extensions": "off"`
-- [ ] `"vue/multi-word-component-names": "off"`
+- [x] `"vue/multi-word-component-names": "off"`
 - [ ] `"import/no-extraneous-dependencies": "off"`
-- [ ] `"no-restricted-syntax": "off"`
+- [x] `"no-restricted-syntax": "off"`
 - [ ] `"import/prefer-default-export": "off"`
-- [ ] `"no-undef": "off"`
+- [x] `"no-undef": "off"`
 - [x] `"unicorn/prefer-json-parse-buffer": "off"`
 - [x] `"unicorn/no-useless-undefined": "off"`
 - [ ] `"no-duplicate-imports": "off"`
 - [x] `"max-len": "off"`
 - [ ] `"vue/max-len": "off"`
-- [ ] `"vue/require-default-prop": "off"`
-- [ ] `"vue/singleline-html-element-content-newline": "off"`
-- [ ] `"vue/html-indent": "off"`
+- [x] `"vue/require-default-prop": "off"`
+- [x] `"vue/singleline-html-element-content-newline": "off"`
+- [x] `"vue/html-indent": "off"`
 
 ## Migration Notes
 
