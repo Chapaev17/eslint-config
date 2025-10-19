@@ -46,9 +46,10 @@ This document contains all configurations from the old ESLint config file and se
 
 - [x] `"no-secrets"` (Security)
 - [ ] `"xss"` (Security) - Not compatible with ESLint 9
-- [ ] `"react"`
+- [x] `"react"`
 - [x] `"@typescript-eslint"`
 - [x] `"unicorn"`
+- [x] `"regexp"`
 
 ### Ignore Patterns
 
@@ -97,6 +98,11 @@ This document contains all configurations from the old ESLint config file and se
 
 - [ ] `"@typescript-eslint/no-shadow": "error"`
 - [ ] `"@typescript-eslint/no-unused-vars": "warn"`
+
+#### Additional TypeScript ESLint Configurations
+
+- [x] `typescript-eslint/strict` configuration
+- [x] `typescript-eslint/stylistic` configuration
 
 #### Vue Rules
 
