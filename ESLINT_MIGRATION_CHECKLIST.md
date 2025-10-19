@@ -135,6 +135,13 @@ This document contains all configurations from the old ESLint config file and se
 
 ## Migration Notes
 
+### Plugins Not Yet Migrated
+
+The following plugins from the original ESLint 8 configuration have not been migrated to ESLint 9:
+
+- **eslint-plugin-lodash** - Plugin for Lodash usage optimization
+- **eslint-plugin-xss** - Security plugin for XSS prevention (not compatible with ESLint 9)
+
 ### ESLint 9 Changes to Consider
 
 1. **Flat Config System**: ESLint 9 uses flat config format instead of traditional config files
