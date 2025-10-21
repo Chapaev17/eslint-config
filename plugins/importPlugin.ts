@@ -1,5 +1,3 @@
-import importPlugin from "eslint-plugin-import"
-
 export default [
   {
     settings: {
@@ -33,9 +31,5 @@ export default [
         },
       ],
     },
-    extends: [
-      importPlugin.flatConfigs.recommended,
-      importPlugin.flatConfigs.typescript,
-    ],
   },
 ]

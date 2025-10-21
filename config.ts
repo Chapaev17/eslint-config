@@ -15,7 +15,6 @@ import prettierPlugin from "./plugins/prettier.ts"
 import promisePlugin from "./plugins/promise.ts"
 import securityPlugin from "./plugins/security.ts"
 import sonarjsPlugin from "./plugins/sonarjs.ts"
-import tsPlugin from "./plugins/tsPlugin.ts"
 import unicornPlugin from "./plugins/unicorn.ts"
 import vuePlugin from "./plugins/vue.ts"
 
@@ -51,8 +50,36 @@ export default defineConfig([
   ...sonarjsPlugin,
   ...unicornPlugin,
   ...prettierPlugin,
-  ...tsPlugin,
+
   {
+    files,
+    ignores,
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        ...globals.es2021,
+      },
+      parser: vueParcser,
+      ecmaVersion: 2024,
+      parserOptions: {
+        parser: tsParser,
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+  },
+  {
+    files,
+    ignores,
+    plugins: {
+      "no-secrets": noSecretsPlugin,
+      react: reactPlugin,
+      regexp: regexpPlugin,
+      nounsanitizedPlugin,
+      "jsx-a11y": jsxA11yPlugin,
+    },
     rules: {
       // # On.
       // ## Standart eslint.
@@ -67,21 +94,21 @@ export default defineConfig([
       "no-console": ["warn", { allow: ["debug", "error", "warn"] }],
       camelcase: "warn",
       // ## Security.
-      "no-secrets/no-secrets": "error",
+      // "no-secrets/no-secrets": "error",
 
       // ## Other
       // All old files wrote wrong.
-      // "unicorn/filename-case": [
-      //   "error",
-      //   {
-      //     Cases: {
-      //       KebabCase: true,
-      //       CamelCase: true,
-      //       SnakeCase: true,
-      //       PascalCase: true,
-      //     },
-      //   },
-      // ],
+      "unicorn/filename-case": [
+        "error",
+        {
+          cases: {
+            kebabCase: true,
+            camelCase: true,
+            snakeCase: true,
+            pascalCase: true,
+          },
+        },
+      ],
 
       // # Off.
       // Use v-html.
@@ -101,7 +128,7 @@ key was't got from user input.
       // Need for correct work no-shadow too.
       "@typescript-eslint/no-shadow": "error",
       // Dont use file format in import.
-      // "import/extensions": "off",
+      "import/extensions": "off",
       // Delete leter.
       "vue/multi-word-component-names": "off",
       // Build with no use variables.
@@ -160,33 +187,6 @@ key was't got from user input.
       // Prettier confilict in multiline v-if.
       "vue/html-indent": "off",
       "sort-keys": "off",
-    },
-  },
-  {
-    files,
-    ignores,
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-        ...globals.es2021,
-      },
-      parser: vueParcser,
-      ecmaVersion: 2024,
-      parserOptions: {
-        parser: tsParser,
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
-    },
-    plugins: {
-      "no-secrets": noSecretsPlugin,
-      // Unicorn: pluginUnicorn,
-      react: reactPlugin,
-      regexp: regexpPlugin,
-      nounsanitizedPlugin,
-      "jsx-a11y": jsxA11yPlugin,
     },
   },
 ])
