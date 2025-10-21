@@ -1,23 +1,11 @@
-import jsEslint from "@eslint/js"
 import { defineConfig } from "eslint/config"
-import eslintConfigPrettier from "eslint-config-prettier/flat"
-import pluginImport from "eslint-plugin-import"
-import eslintPluginJsonc from "eslint-plugin-jsonc"
-import pluginJsxA11y from "eslint-plugin-jsx-a11y"
-import pluginNoSecrets from "eslint-plugin-no-secrets"
-import nounsanitized from "eslint-plugin-no-unsanitized"
-import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended"
-import pluginPromise from "eslint-plugin-promise"
-import pluginReact from "eslint-plugin-react"
-import * as pluginRegexp from "eslint-plugin-regexp"
-import pluginSecurity from "eslint-plugin-security"
-import sonarjs from "eslint-plugin-sonarjs"
-import pluginUnicorn from "eslint-plugin-unicorn"
-import pluginVue from "eslint-plugin-vue"
+import importPlugin from "eslint-plugin-import"
 import globals from "globals"
-import tsEslint from "typescript-eslint"
+import { parser as tsParser } from "typescript-eslint"
 import vueParcser from "vue-eslint-parser"
 
+import configs from "./configs.ts"
+import plugins from "./plugins.ts"
 import rules from "./rules.ts"
 
 const ignores = [
@@ -29,33 +17,23 @@ const ignores = [
   "src/types/backend/backendApi.ts",
 ]
 
+const files = [
+  "*.js",
+  "**/*.js",
+  "*.jsx",
+  "**/*.jsx",
+  "*.ts",
+  "**/*.ts",
+  "*.tsx",
+  "**/*.tsx",
+  "*.vue",
+  "**/*.vue",
+]
+
 export default defineConfig([
-  jsEslint.configs.all,
-  ...pluginVue.configs["flat/essential"],
-  nounsanitized.configs.recommended,
-  pluginSecurity.configs.recommended,
-  pluginPromise.configs["flat/recommended"],
-  sonarjs.configs.recommended,
-  pluginUnicorn.configs.all,
-  // Enable in commit linter
-  eslintConfigPrettier,
-  eslintPluginPrettierRecommended,
-  ...eslintPluginJsonc.configs["flat/recommended-with-jsonc"],
-  ...tsEslint.configs.strict,
-  ...tsEslint.configs.stylistic,
-  // If use type checking in eslint
-  // ...tsEslint.configs.strictTypeChecked,
-  // ...tsEslint.configs.stylisticTypeChecked,
-  // {
-  //   LanguageOptions: {
-  //     ParserOptions: {
-  //       ProjectService: true,
-  //       ExtraFileExtensions: [".vue"],
-  //     },
-  //   },
-  // },
+  ...configs,
   {
-    files: ["*.vue", "**/*.vue", "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
+    files,
     ignores,
     languageOptions: {
       globals: {
@@ -66,7 +44,7 @@ export default defineConfig([
       parser: vueParcser,
       ecmaVersion: 2024,
       parserOptions: {
-        parser: tsEslint.parser,
+        parser: tsParser,
         ecmaFeatures: {
           jsx: true,
         },
@@ -80,17 +58,10 @@ export default defineConfig([
         },
       },
     },
-    plugins: {
-      "no-secrets": pluginNoSecrets,
-      // Unicorn: pluginUnicorn,
-      react: pluginReact,
-      regexp: pluginRegexp,
-      nounsanitized,
-      "jsx-a11y": pluginJsxA11y,
-    },
+    plugins,
     extends: [
-      pluginImport.flatConfigs.recommended,
-      pluginImport.flatConfigs.typescript,
+      importPlugin.flatConfigs.recommended,
+      importPlugin.flatConfigs.typescript,
     ],
     rules,
   },

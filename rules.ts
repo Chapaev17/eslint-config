@@ -1,35 +1,3 @@
-const baseRules = {
-  // # Disable
-  // Broke commented commented code
-  "capitalized-comments": "off",
-  // Conflict with "import/order"
-  "sort-imports": "off",
-  "one-var": "off",
-
-  // # Enable
-  "import/order": [
-    "error",
-    {
-      groups: [
-        "builtin",
-        "external",
-        "internal",
-        "parent",
-        "sibling",
-        "index",
-        "object",
-        "type",
-        "unknown",
-      ],
-      "newlines-between": "always",
-      alphabetize: {
-        order: "asc",
-        caseInsensitive: true,
-      },
-    },
-  ],
-}
-
 const rules = {
   // # On.
   // ## Standart eslint.
@@ -59,6 +27,27 @@ const rules = {
   //     },
   //   },
   // ],
+  "import/order": [
+    "error",
+    {
+      groups: [
+        "builtin",
+        "external",
+        "internal",
+        "parent",
+        "sibling",
+        "index",
+        "object",
+        "type",
+        "unknown",
+      ],
+      "newlines-between": "always",
+      alphabetize: {
+        order: "asc",
+        caseInsensitive: true,
+      },
+    },
+  ],
 
   // # Off.
   // Use v-html.
@@ -96,6 +85,11 @@ key was't got from user input.
   "react/jsx-sort-props": "warn",
   // Change error to wart. This most build in dev with this.
   "@typescript-eslint/no-unused-vars": "warn",
+  // Broke commented commented code
+  "capitalized-comments": "off",
+  // Conflict with "import/order"
+  "sort-imports": "off",
+  "one-var": "off",
 
   // # For vue template
   // "max-len": [
@@ -147,4 +141,4 @@ key was't got from user input.
   "sort-keys": "off",
 }
 
-export default { ...rules, ...baseRules }
+export default rules
