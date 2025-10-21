@@ -1,23 +1,23 @@
 import { defineConfig } from "eslint/config"
-import prettierConfigFlat from "eslint-config-prettier/flat"
-import jsoncPlugin from "eslint-plugin-jsonc"
 import jsxA11yPlugin from "eslint-plugin-jsx-a11y"
 import noSecretsPlugin from "eslint-plugin-no-secrets"
-import nounsanitizedPlugin from "eslint-plugin-no-unsanitized"
-import prettierPluginRecommended from "eslint-plugin-prettier/recommended"
-import promisePlugin from "eslint-plugin-promise"
 import reactPlugin from "eslint-plugin-react"
 import * as regexpPlugin from "eslint-plugin-regexp"
-import securityPlugin from "eslint-plugin-security"
-import sonarjsPlugin from "eslint-plugin-sonarjs"
-import unicornPlugin from "eslint-plugin-unicorn"
-import vuePlugin from "eslint-plugin-vue"
 import globals from "globals"
-import { configs as tsConfigs, parser as tsParser } from "typescript-eslint"
+import { parser as tsParser } from "typescript-eslint"
 import vueParcser from "vue-eslint-parser"
 
 import importPlugin from "./plugins/importPlugin"
+import jsoncPlugin from "./plugins/jsonc.ts"
 import jsPlugin from "./plugins/jsPlugin.ts"
+import nounsanitizedPlugin from "./plugins/nounsanitized.ts"
+import prettierPlugin from "./plugins/prettier.ts"
+import promisePlugin from "./plugins/promise.ts"
+import securityPlugin from "./plugins/security.ts"
+import sonarjsPlugin from "./plugins/sonarjs.ts"
+import tsPlugin from "./plugins/tsPlugin.ts"
+import unicornPlugin from "./plugins/unicorn.ts"
+import vuePlugin from "./plugins/vue.ts"
 
 const ignores = [
   "node_modules/**/*",
@@ -27,7 +27,6 @@ const ignores = [
   "static/sw.js",
   "src/types/backend/backendApi.ts",
 ]
-
 const files = [
   "*.js",
   "**/*.js",
@@ -44,56 +43,16 @@ const files = [
 export default defineConfig([
   ...importPlugin,
   ...jsPlugin,
-
-  ...vuePlugin.configs["flat/essential"],
-  nounsanitizedPlugin.configs.recommended,
-  securityPlugin.configs.recommended,
-  promisePlugin.configs["flat/recommended"],
-  sonarjsPlugin.configs.recommended,
-  unicornPlugin.configs.all,
-  // Enable in commit linter
-  prettierConfigFlat,
-  prettierPluginRecommended,
-  ...jsoncPlugin.configs["flat/recommended-with-jsonc"],
-  ...tsConfigs.strict,
-  ...tsConfigs.stylistic,
-  // If use type checking in eslint
-  // ...tsEslint.configs.strictTypeChecked,
-  // ...tsEslint.configs.stylisticTypeChecked,
-  // {
-  //   LanguageOptions: {
-  //     ParserOptions: {
-  //       ProjectService: true,
-  //       ExtraFileExtensions: [".vue"],
-  //     },
-  //   },
-  // },
+  ...vuePlugin,
+  ...jsoncPlugin,
+  ...nounsanitizedPlugin,
+  ...securityPlugin,
+  ...promisePlugin,
+  ...sonarjsPlugin,
+  ...unicornPlugin,
+  ...prettierPlugin,
+  ...tsPlugin,
   {
-    files,
-    ignores,
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-        ...globals.es2021,
-      },
-      parser: vueParcser,
-      ecmaVersion: 2024,
-      parserOptions: {
-        parser: tsParser,
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
-    },
-    plugins: {
-      "no-secrets": noSecretsPlugin,
-      // Unicorn: pluginUnicorn,
-      react: reactPlugin,
-      regexp: regexpPlugin,
-      nounsanitizedPlugin,
-      "jsx-a11y": jsxA11yPlugin,
-    },
     rules: {
       // # On.
       // ## Standart eslint.
@@ -186,19 +145,6 @@ key was't got from user input.
           math: "always",
         },
       ],
-      // Prettier confilict with this rule in self closed
-      // Tags.
-      // "vue/html-closing-bracket-newline": [
-      //   "error",
-      //   {
-      //     Singleline: "never",
-      //     Multiline: "always",
-      //     SelfClosingTag: {
-      //       Singleline: "never",
-      //       Multiline: "never",
-      //     },
-      //   },
-      // ],
       // Dont need default props if require is true
       "vue/require-default-prop": "off",
       "vue/max-attributes-per-line": [
@@ -216,5 +162,31 @@ key was't got from user input.
       "sort-keys": "off",
     },
   },
+  {
+    files,
+    ignores,
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        ...globals.es2021,
+      },
+      parser: vueParcser,
+      ecmaVersion: 2024,
+      parserOptions: {
+        parser: tsParser,
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+    plugins: {
+      "no-secrets": noSecretsPlugin,
+      // Unicorn: pluginUnicorn,
+      react: reactPlugin,
+      regexp: regexpPlugin,
+      nounsanitizedPlugin,
+      "jsx-a11y": jsxA11yPlugin,
+    },
+  },
 ])
-
