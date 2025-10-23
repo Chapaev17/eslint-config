@@ -1,8 +1,5 @@
 import { defineConfig } from "eslint/config"
-import jsxA11yPlugin from "eslint-plugin-jsx-a11y"
 import noSecretsPlugin from "eslint-plugin-no-secrets"
-import reactPlugin from "eslint-plugin-react"
-import * as regexpPlugin from "eslint-plugin-regexp"
 import globals from "globals"
 import { parser as tsParser } from "typescript-eslint"
 import vueParcser from "vue-eslint-parser"
@@ -10,9 +7,12 @@ import vueParcser from "vue-eslint-parser"
 import importPlugin from "./plugins/importPlugin"
 import jsoncPlugin from "./plugins/jsonc"
 import jsPlugin from "./plugins/jsPlugin"
+import jsxA11yPlugin from "./plugins/jsxA11y"
 import nounsanitizedPlugin from "./plugins/nounsanitized"
 import prettierPlugin from "./plugins/prettier"
 import promisePlugin from "./plugins/promise"
+import reactPlugin from "./plugins/react"
+import regexpPlugin from "./plugins/regexp"
 import securityPlugin from "./plugins/security"
 import sonarjsPlugin from "./plugins/sonarjs"
 import unicornPlugin from "./plugins/unicorn"
@@ -50,6 +50,9 @@ export default defineConfig([
   ...sonarjsPlugin,
   ...unicornPlugin,
   ...prettierPlugin,
+  ...reactPlugin,
+  ...regexpPlugin,
+  ...jsxA11yPlugin,
 
   {
     files,
@@ -76,10 +79,6 @@ export default defineConfig([
     plugins: {
       // Install as one rule
       "no-secrets": noSecretsPlugin,
-      react: reactPlugin,
-      regexp: regexpPlugin,
-      nounsanitizedPlugin,
-      "jsx-a11y": jsxA11yPlugin,
     },
     rules: {
       // # On.
