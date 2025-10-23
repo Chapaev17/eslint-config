@@ -22,5 +22,11 @@ export default function tsConfig() {
         "@typescript-eslint/no-unused-vars": "warn",
       },
     },
+    {
+      files: ["*.json"],
+      rules: {
+        "@typescript-eslint/no-unused-expressions": "off",
+      },
+    },
   ])
 }

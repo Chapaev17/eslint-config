@@ -1,4 +1,4 @@
-import { defineConfig } from "eslint/config"
+import { defineConfig, globalIgnores } from "eslint/config"
 import globals from "globals"
 import { parser as tsParser } from "typescript-eslint"
 import vueParcser from "vue-eslint-parser"
@@ -33,15 +33,6 @@ const files = [
   "**/*.vue",
 ]
 
-const ignores = [
-  "node_modules/**/*",
-  "dist/**/*",
-  ".nuxt/**/*",
-  // "libs/**/*",
-  "static/sw.js",
-  "src/types/backend/backendApi.ts",
-]
-
 const rules = {
   // ## Other
   // # Off.
@@ -55,31 +46,42 @@ const rules = {
   // "unicorn/no-useless-undefined": "off",
 }
 
+const vueParserConfig = {
+  files,
+  languageOptions: {
+    ecmaVersion: 2024,
+    globals: {
+      ...globals.browser,
+      ...globals.node,
+      ...globals.es2021,
+    },
+    parser: vueParcser,
+    parserOptions: {
+      ecmaFeatures: {
+        jsx: true,
+      },
+      parser: tsParser,
+    },
+  },
+}
+
+const ignoreConfig = globalIgnores([
+  "node_modules/**/*",
+  "dist/**/*",
+  ".nuxt/**/*",
+  // "libs/**/*",
+  "static/sw.js",
+  "src/types/backend/backendApi.ts",
+  ".yarn",
+])
+
 export default function cheConfig(parameters?: { nuxt: boolean }) {
   let config = [
+    ignoreConfig,
     rules,
-    {
-      files,
-      ignores,
-      languageOptions: {
-        ecmaVersion: 2024,
-        globals: {
-          ...globals.browser,
-          ...globals.node,
-          ...globals.es2021,
-        },
-        parser: vueParcser,
-        parserOptions: {
-          ecmaFeatures: {
-            jsx: true,
-          },
-          parser: tsParser,
-        },
-      },
-    },
+    vueParserConfig,
     ...importConfig({ nuxt: parameters?.nuxt }),
     ...jsConfig(),
-    ...vueConfig(),
     ...jsoncConfig(),
     ...nounsanitizedConfig(),
     ...securityConfig(),
@@ -95,7 +97,7 @@ export default function cheConfig(parameters?: { nuxt: boolean }) {
   ]
 
   if (parameters?.nuxt !== true) {
-    config = [...config, ...tsConfig()]
+    config = [...config, ...tsConfig(), ...vueConfig()]
   }
 
   return defineConfig(config)

@@ -6,21 +6,21 @@ export default function unicornConfig() {
     unicornPlugin.configs.all,
     {
       rules: {
+        // # Change level.
+        "unicorn/consistent-function-scoping": "warn",
+
         // All old files wrote wrong.
         "unicorn/filename-case": [
           "error",
           {
             cases: {
-              kebabCase: true,
               camelCase: true,
-              snakeCase: true,
+              kebabCase: true,
               pascalCase: true,
+              snakeCase: true,
             },
           },
         ],
-
-        // # Change level.
-        "unicorn/consistent-function-scoping": "warn",
       },
     },
   ])

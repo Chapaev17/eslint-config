@@ -28,7 +28,7 @@ export default function importConfig(parameters: { nuxt?: boolean }) {
 
         "import/first": "warn",
         "import/group-exports": "warn",
-        "import/max-dependencies": "warn",
+        // "import/max-dependencies": "warn",
 
         "import/named": "error",
         "import/namespace": "error",
@@ -39,7 +39,7 @@ export default function importConfig(parameters: { nuxt?: boolean }) {
         // "import/no-cycle": "warn",
         "import/no-anonymous-default-export": "warn",
         "import/no-commonjs": "warn",
-        "import/no-default-export": "warn",
+        // "import/no-default-export": "warn",
         // Other rules
         "import/no-deprecated": "warn",
 
