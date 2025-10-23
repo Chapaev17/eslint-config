@@ -14,4 +14,10 @@ export default [
   //     },
   //   },
   // },
+  {
+    rules: {
+      // Change error to wart. This most build in dev with this.
+      "@typescript-eslint/no-unused-vars": "warn",
+    },
+  },
 ]
