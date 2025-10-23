@@ -1,7 +1,7 @@
 import { defineConfig, globalIgnores } from "eslint/config"
 import globals from "globals"
 import { parser as tsParser } from "typescript-eslint"
-import vueParcser from "vue-eslint-parser"
+import vueParser from "vue-eslint-parser"
 
 import importConfig from "./configs/importConfig"
 import jsConfig from "./configs/jsConfig"
@@ -55,7 +55,7 @@ const vueParserConfig = {
       ...globals.node,
       ...globals.es2021,
     },
-    parser: vueParcser,
+    parser: vueParser,
     parserOptions: {
       ecmaFeatures: {
         jsx: true,
