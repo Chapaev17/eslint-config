@@ -1,5 +1,6 @@
-/** @type {import("prettier").Config} */
-const config = {
+import { type Config } from "prettier"
+
+const config: Config = {
   tabWidth: 2,
   printWidth: 79,
   semi: false,
@@ -8,4 +9,5 @@ const config = {
   bracketSameLine: false,
   singleAttributePerLine: false,
 }
+
 export default config

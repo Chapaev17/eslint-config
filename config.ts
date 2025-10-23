@@ -74,6 +74,7 @@ export default defineConfig([
     files,
     ignores,
     plugins: {
+      // Install as one rule
       "no-secrets": noSecretsPlugin,
       react: reactPlugin,
       regexp: regexpPlugin,
@@ -94,7 +95,7 @@ export default defineConfig([
       "no-console": ["warn", { allow: ["debug", "error", "warn"] }],
       camelcase: "warn",
       // ## Security.
-      // "no-secrets/no-secrets": "error",
+      "no-secrets/no-secrets": "error",
 
       // ## Other
       // All old files wrote wrong.
