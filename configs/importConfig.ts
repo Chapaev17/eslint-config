@@ -8,7 +8,8 @@ const noNuxtExtends = [
 
 // eslint-disable-next-line max-lines-per-function
 export default function importConfig(parameters: { nuxt?: boolean }) {
-  const valideExtends = parameters.nuxt === true ? [] : noNuxtExtends
+  const valideExtends =
+    parameters.nuxt === true ? ([] as typeof noNuxtExtends) : noNuxtExtends
 
   return defineConfig([
     {

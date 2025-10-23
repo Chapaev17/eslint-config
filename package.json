@@ -46,5 +46,8 @@
     "build": "tsc",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "eslint-plugin-import": "^2.32.0"
   }
 }
