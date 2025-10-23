@@ -1,22 +1,22 @@
 import { defineConfig } from "eslint/config"
-import noSecretsPlugin from "eslint-plugin-no-secrets"
 import globals from "globals"
 import { parser as tsParser } from "typescript-eslint"
 import vueParcser from "vue-eslint-parser"
 
-import importPlugin from "./plugins/importPlugin"
-import jsoncPlugin from "./plugins/jsonc"
-import jsPlugin from "./plugins/jsPlugin"
-import jsxA11yPlugin from "./plugins/jsxA11y"
-import nounsanitizedPlugin from "./plugins/nounsanitized"
-import prettierPlugin from "./plugins/prettier"
-import promisePlugin from "./plugins/promise"
-import reactPlugin from "./plugins/react"
-import regexpPlugin from "./plugins/regexp"
-import securityPlugin from "./plugins/security"
-import sonarjsPlugin from "./plugins/sonarjs"
-import unicornPlugin from "./plugins/unicorn"
-import vuePlugin from "./plugins/vue"
+import importConfig from "./configs/importConfig"
+import jsoncConfig from "./configs/jsonc"
+import jsConfig from "./configs/jsConfig"
+import jsxA11yConfig from "./configs/jsxA11y"
+import nounsanitizedConfig from "./configs/nounsanitized"
+import prettierConfig from "./configs/prettier"
+import promiseConfig from "./configs/promiseConfig"
+import reactConfig from "./configs/react"
+import regexpConfig from "./configs/regexp"
+import securityConfig from "./configs/security"
+import sonarjsConfig from "./configs/sonarjs"
+import unicornConfig from "./configs/unicorn"
+import vueConfig from "./configs/vue"
+import noSecrets from "./configs/noSecrets"
 
 const ignores = [
   "node_modules/**/*",
@@ -41,48 +41,31 @@ const files = [
 ]
 
 export default defineConfig([
-  ...importPlugin,
-  ...jsPlugin,
-  ...vuePlugin,
-  ...jsoncPlugin,
-  ...nounsanitizedPlugin,
-  ...securityPlugin,
-  ...promisePlugin,
-  ...sonarjsPlugin,
-  ...unicornPlugin,
-  ...prettierPlugin,
-  ...reactPlugin,
-  ...regexpPlugin,
-  ...jsxA11yPlugin,
+  ...importConfig,
+  ...jsConfig,
+  ...vueConfig,
+  ...jsoncConfig,
+  ...nounsanitizedConfig,
+  ...securityConfig,
+  ...promiseConfig,
+  ...sonarjsConfig,
+  ...unicornConfig,
+  ...prettierConfig,
+  ...reactConfig,
+  ...regexpConfig,
+  ...jsxA11yConfig,
+  ...noSecrets,
   {
-    files,
-    ignores,
-    plugins: {
-      // Install as one rule
-      "no-secrets": noSecretsPlugin,
-    },
-    rules: {
-      // # On.
-      // ## Security.
-      "no-secrets/no-secrets": "error",
-
-      // ## Other
-
-      // # Off.
-
-      // He get clear text without space and enlines.
-      // "unicorn/prefer-dom-node-text-content": "off",
-
-      // Build with no use variables.
-      // "import/no-extraneous-dependencies": "off",
-      // "import/prefer-default-export": "off",
-      // Conflict with typescript and maybe slow.
-      // "unicorn/prefer-json-parse-buffer": "off",
-      // "unicorn/no-useless-undefined": "off",
-
-      // # Change level.
-      "unicorn/consistent-function-scoping": "warn",
-    },
+    // ## Other
+    // # Off.
+    // He get clear text without space and enlines.
+    // "unicorn/prefer-dom-node-text-content": "off",
+    // Build with no use variables.
+    // "import/no-extraneous-dependencies": "off",
+    // "import/prefer-default-export": "off",
+    // Conflict with typescript and maybe slow.
+    // "unicorn/prefer-json-parse-buffer": "off",
+    // "unicorn/no-useless-undefined": "off",
   },
   {
     files,

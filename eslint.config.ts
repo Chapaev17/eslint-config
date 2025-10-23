@@ -1,8 +1,8 @@
 import { defineConfig } from "eslint/config"
 import { flatConfigs as importPluginflatConfigs } from "eslint-plugin-import"
 
-import config from "./config.ts"
-import tsPlugin from "./plugins/tsPlugin.ts"
+import config from "./config"
+import tsPlugin from "./configs/tsConfig"
 
 export default defineConfig([
   ...tsPlugin,

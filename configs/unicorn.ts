@@ -16,6 +16,9 @@ export default [
           },
         },
       ],
+
+      // # Change level.
+      "unicorn/consistent-function-scoping": "warn",
     },
   },
 ]
