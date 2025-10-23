@@ -1,13 +1,13 @@
-import { type Config } from "prettier"
+import type { Config } from "prettier"
 
 const config: Config = {
-  tabWidth: 2,
-  printWidth: 79,
-  semi: false,
+  bracketSameLine: false,
   endOfLine: "lf",
   plugins: ["prettier-plugin-tailwindcss"],
-  bracketSameLine: false,
+  printWidth: 79,
+  semi: false,
   singleAttributePerLine: false,
+  tabWidth: 2,
 }
 
 export default config

@@ -342,7 +342,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/types@npm:8.46.2, @typescript-eslint/types@npm:^8.46.2":
+"@typescript-eslint/types@npm:8.46.2, @typescript-eslint/types@npm:^8.38.0, @typescript-eslint/types@npm:^8.46.2":
   version: 8.46.2
   resolution: "@typescript-eslint/types@npm:8.46.2"
   checksum: 10/c641453c868b730ef64bd731cc47b19e1a5e45c090dfe9542ecd15b24c5a7b6dc94a8ef4e548b976aabcd1ca9dec1b766e417454b98ea59079795eb008226b38
@@ -369,7 +369,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/utils@npm:8.46.2":
+"@typescript-eslint/utils@npm:8.46.2, @typescript-eslint/utils@npm:^8.38.0":
   version: 8.46.2
   resolution: "@typescript-eslint/utils@npm:8.46.2"
   dependencies:
@@ -1156,6 +1156,7 @@ __metadata:
     eslint-plugin-jsx-a11y: "npm:^6.10.2"
     eslint-plugin-no-secrets: "npm:^2.2.1"
     eslint-plugin-no-unsanitized: "npm:^4.1.4"
+    eslint-plugin-perfectionist: "npm:^4.15.1"
     eslint-plugin-prettier: "npm:^5.5.4"
     eslint-plugin-react: "npm:^7.37.5"
     eslint-plugin-regexp: "npm:^2.10.0"
@@ -1280,6 +1281,19 @@ __metadata:
   peerDependencies:
     eslint: ^8 || ^9
   checksum: 10/ca013683e94f65f1db2f743bfc6ae841a86f8c976c582335fff8d0e6d461ef946bd88f11a4bc858272ccaff17a547c3603e6e593b0d5d6445a723463a6f52119
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-perfectionist@npm:^4.15.1":
+  version: 4.15.1
+  resolution: "eslint-plugin-perfectionist@npm:4.15.1"
+  dependencies:
+    "@typescript-eslint/types": "npm:^8.38.0"
+    "@typescript-eslint/utils": "npm:^8.38.0"
+    natural-orderby: "npm:^5.0.0"
+  peerDependencies:
+    eslint: ">=8.45.0"
+  checksum: 10/974ba29d9a36592ac754dc1ffb35f26a5305be9ad336d9b15c697d699253a4b49a21fe8bd40878aa9245dffbad1620061ec2412d54e07295b46f973d57c81090
   languageName: node
   linkType: hard
 
@@ -2332,6 +2346,13 @@ __metadata:
   version: 1.4.0
   resolution: "natural-compare@npm:1.4.0"
   checksum: 10/23ad088b08f898fc9b53011d7bb78ec48e79de7627e01ab5518e806033861bef68d5b0cd0e2205c2f36690ac9571ff6bcb05eb777ced2eeda8d4ac5b44592c3d
+  languageName: node
+  linkType: hard
+
+"natural-orderby@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "natural-orderby@npm:5.0.0"
+  checksum: 10/7620051a2d79af81ac6bce96f6bdec45c291d4acc1d709d62d7a6648b01cda4e751415d63bc71060ce8ab223dbf3ce013f229ee683ea651868f36ea4008d0dbe
   languageName: node
   linkType: hard
 
