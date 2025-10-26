@@ -9,6 +9,7 @@ export default function promiseConfig() {
       rules: {
         // "perfectionist/sort-exports": "off",
         "perfectionist/sort-imports": "off",
+        "perfectionist/sort-modules": "off",
       },
     },
   ])

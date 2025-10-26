@@ -14,16 +14,26 @@ export default function jsConfig() {
         // Comma at the end of the line
         "comma-dangle": ["warn", "always-multiline"],
         "eol-last": "warn",
+        "func-style": ["error", "declaration"],
         // Line end format
         "linebreak-style": ["error", "unix"],
         // Acces console debug, coze nuxt delete them in build.
         "no-console": ["warn", { allow: ["debug", "error", "warn"] }],
-        "no-duplicate-imports": "error",
-        "no-restricted-syntax": "off",
+        "no-duplicate-imports": "off",
+        "no-magic-numbers": [
+          "error",
+          {
+            ignore: [-1, 0, 1, 2, 3],
+            ignoreClassFieldInitialValues: true,
+            ignoreDefaultValues: true,
+          },
+        ],
         // Fix wrong work no-shadow in ts.
+        "no-restricted-syntax": "off",
         "no-shadow": "off",
         "no-ternary": "off",
         "no-undef": "off",
+        "no-undefined": "off",
         "one-var": "off",
         quotes: ["error", "double", { avoidEscape: true }],
         // Not write jsdoc comments.

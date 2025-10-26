@@ -63,7 +63,7 @@ export default function importConfig(parameters: { nuxt?: boolean }) {
         "import/no-restricted-paths": "warn",
         "import/no-self-import": "warn",
         "import/no-unassigned-import": "warn",
-        "import/no-unresolved": "error",
+        // "import/no-unresolved": "error",
         "import/no-unused-modules": "warn",
         "import/no-useless-path-segments": "warn",
         "import/no-webpack-loader-syntax": "warn",
