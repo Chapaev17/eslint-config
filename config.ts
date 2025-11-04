@@ -43,7 +43,6 @@ const rules = {
   // "import/prefer-default-export": "off",
   // Conflict with typescript and maybe slow.
   // "unicorn/prefer-json-parse-buffer": "off",
-  // "unicorn/no-useless-undefined": "off",
 }
 
 const vueParserConfig = {

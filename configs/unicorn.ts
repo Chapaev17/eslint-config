@@ -8,6 +8,7 @@ export default function unicornConfig() {
       rules: {
         // # Change level.
         "unicorn/consistent-function-scoping": "warn",
+        "unicorn/no-useless-undefined": "off",
 
         // All old files wrote wrong.
         "unicorn/filename-case": [

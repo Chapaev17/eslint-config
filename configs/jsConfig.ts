@@ -1,6 +1,8 @@
 import jsPlugin from "@eslint/js"
 import { defineConfig } from "eslint/config"
 
+const maxStatementsValue = 15
+
 export default function jsConfig() {
   return defineConfig([
     jsPlugin.configs.all,
@@ -17,8 +19,15 @@ export default function jsConfig() {
         "func-style": ["error", "declaration"],
         // Line end format
         "linebreak-style": ["error", "unix"],
+        "max-lines-per-function": ["warn", { max: 170, skipComments: true }],
+        "max-statements": [
+          "warn",
+          maxStatementsValue,
+          { ignoreTopLevelFunctions: true },
+        ],
         // Acces console debug, coze nuxt delete them in build.
         "no-console": ["warn", { allow: ["debug", "error", "warn"] }],
+
         "no-duplicate-imports": "off",
         "no-magic-numbers": [
           "error",

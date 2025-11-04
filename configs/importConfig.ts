@@ -39,7 +39,7 @@ export default function importConfig(parameters: { nuxt?: boolean }) {
         // "import/no-cycle": "warn",
         "import/no-anonymous-default-export": "warn",
         "import/no-commonjs": "warn",
-        // "import/no-default-export": "warn",
+        "import/no-default-export": "warn",
         // Other rules
         "import/no-deprecated": "warn",
 
@@ -55,7 +55,7 @@ export default function importConfig(parameters: { nuxt?: boolean }) {
         "import/no-named-as-default": "warn",
         "import/no-named-as-default-member": "warn",
         "import/no-named-default": "warn",
-        "import/no-named-export": "warn",
+        "import/no-named-export": "off",
         "import/no-namespace": "warn",
         "import/no-nodejs-modules": "warn",
         "import/no-relative-packages": "warn",
@@ -89,8 +89,7 @@ export default function importConfig(parameters: { nuxt?: boolean }) {
             "newlines-between": "always",
           },
         ],
-
-        "import/prefer-default-export": "warn",
+        "import/prefer-default-export": "off",
       },
       settings: {
         "import/resolver": {
