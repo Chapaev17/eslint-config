@@ -6,8 +6,12 @@ const noNuxtExtends = [
   importPluginflatConfigs.typescript,
 ]
 
-// eslint-disable-next-line max-lines-per-function
-export default function importConfig(parameters: { nuxt?: boolean }) {
+const exportDeafaultExcludeConfig = defineConfig({
+  files: ["vitest.config.ts", "nuxt.config.ts", "playwright.config.ts"],
+  rules: { "import/no-default-export": "off" },
+})
+
+export function importConfig(parameters: { nuxt?: boolean }) {
   const valideExtends =
     parameters.nuxt === true ? ([] as typeof noNuxtExtends) : noNuxtExtends
 
@@ -49,7 +53,8 @@ export default function importConfig(parameters: { nuxt?: boolean }) {
         "import/no-empty-named-blocks": "warn",
         "import/no-extraneous-dependencies": "warn",
         "import/no-import-module-exports": "warn",
-        "import/no-internal-modules": "warn",
+        // TODO: Investigate and configure this rule to work properly
+        "import/no-internal-modules": "off",
         "import/no-mutable-exports": "warn",
         // Warnings
         "import/no-named-as-default": "warn",
@@ -57,7 +62,7 @@ export default function importConfig(parameters: { nuxt?: boolean }) {
         "import/no-named-default": "warn",
         "import/no-named-export": "off",
         "import/no-namespace": "warn",
-        "import/no-nodejs-modules": "warn",
+        "import/no-nodejs-modules": "off",
         "import/no-relative-packages": "warn",
         "import/no-relative-parent-imports": "warn",
         "import/no-restricted-paths": "warn",
@@ -100,5 +105,6 @@ export default function importConfig(parameters: { nuxt?: boolean }) {
         },
       },
     },
+    exportDeafaultExcludeConfig,
   ])
 }

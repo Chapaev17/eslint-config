@@ -3,7 +3,7 @@ import { defineConfig } from "eslint/config"
 
 const maxStatementsValue = 15
 
-export default function jsConfig() {
+export function jsConfig() {
   return defineConfig([
     jsPlugin.configs.all,
     {
@@ -27,7 +27,6 @@ export default function jsConfig() {
         ],
         // Acces console debug, coze nuxt delete them in build.
         "no-console": ["warn", { allow: ["debug", "error", "warn"] }],
-
         "no-duplicate-imports": "off",
         "no-magic-numbers": [
           "error",
@@ -37,18 +36,21 @@ export default function jsConfig() {
             ignoreDefaultValues: true,
           },
         ],
+
         // Fix wrong work no-shadow in ts.
         "no-restricted-syntax": "off",
         "no-shadow": "off",
         "no-ternary": "off",
         "no-undef": "off",
         "no-undefined": "off",
+        "no-warning-comments": "off",
         "one-var": "off",
         quotes: ["error", "double", { avoidEscape: true }],
         // Not write jsdoc comments.
         "require-jsdoc": "off",
         // Conflict with "import/order"
         "sort-imports": "off",
+        "sort-keys": ["warn", "asc", { caseSensitive: false, natural: true }],
         // Not write jsdoc comments.
         "valid-jsdoc": "off",
       },
