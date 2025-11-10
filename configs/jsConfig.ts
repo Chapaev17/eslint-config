@@ -10,7 +10,7 @@ export function jsConfig() {
       rules: {
         // Need for correct work no-shadow too.
         "@typescript-eslint/no-shadow": "error",
-        camelcase: "warn",
+        camelcase: ["error", { properties: "never" }],
         // Broke commented commented code
         "capitalized-comments": "off",
         // Comma at the end of the line
