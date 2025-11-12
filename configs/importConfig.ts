@@ -7,7 +7,7 @@ const noNuxtExtends = [
 ]
 
 const exportDeafaultExcludeConfig = defineConfig({
-  files: ["vitest.config.ts", "nuxt.config.ts", "playwright.config.ts"],
+  files: ["vitest.config.mts", "nuxt.config.ts", "playwright.config.ts"],
   rules: { "import/no-default-export": "off" },
 })
 
